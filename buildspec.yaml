@@ -10,7 +10,7 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...          
-      - docker build -t service1 -f ./service1/Dockerfile .
+      - docker build -t work .
       - docker tag work:latest 107368385520.dkr.ecr.us-east-1.amazonaws.com/work:latest
   post_build:
     commands:
