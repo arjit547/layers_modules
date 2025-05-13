@@ -4,7 +4,11 @@ phases:
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
+      - echo "Checking AWS CLI version"
+      - aws --version # Check if AWS CLI is properly set up
+      - echo "Attempting to login to ECR"
       - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 107368385520.dkr.ecr.us-east-1.amazonaws.com
+      - echo "Logged into ECR successfully"
       
   build:
     commands:
@@ -12,14 +16,14 @@ phases:
       - echo Building the Docker image...          
       - docker build -t work .
       - docker tag work:latest 107368385520.dkr.ecr.us-east-1.amazonaws.com/work:latest
+
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
       - docker push 107368385520.dkr.ecr.us-east-1.amazonaws.com/work:latest
       - echo Writing image definitions file...
-      - printf '[{"name":"react1-container","imageUri":"107368385520.dkr.ecr.us-east-1.amazonaws.com/work:latest"}]' 107368385520.dkr.ecr.us-east-1.amazonaws.com/work:latest > imagedefinitions1.json.json
+      - printf '[{"name":"react1-container","imageUri":"107368385520.dkr.ecr.us-east-1.amazonaws.com/work:latest"}]' > imagedefinitions1.json
 artifacts:
-    files:
-        - imagedefinitions1.json.json 
-      
+  files:
+    - imagedefinitions1.json
