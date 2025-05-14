@@ -7,7 +7,7 @@ phases:
       - echo "Checking AWS CLI version"
       - aws --version # Check if AWS CLI is properly set up
       - echo "Attempting to login to ECR"
-      - echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
+      #- echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin
       - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 107368385520.dkr.ecr.us-east-1.amazonaws.com
       - echo "Logged into ECR successfully"
       
