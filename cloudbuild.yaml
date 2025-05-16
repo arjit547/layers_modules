@@ -3,10 +3,11 @@ steps:
     args:
       - compute
       - ssh
-      - ubuntu@dockercicd  # VM name
+      - ubuntu@dockercicd
       - --zone=us-east4-a
       - --command=cd /home/faithproject424 && bash ./deploy.sh
 
 timeout: '1200s'
 
-
+options:
+  defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
