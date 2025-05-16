@@ -1,4 +1,32 @@
+# steps:
+#   - name: 'gcr.io/cloud-builders/gcloud'
+#     args:
+#       - compute
+#       - ssh
+#       - ubuntu@dockercicd
+#       - --zone=us-east4-a
+#       - --command=cd /home/faithproject424/cicd && bash ./deploy.sh
+
+# timeout: '1200s'
+
+# options:
+#   defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
+
+######
+
+
 steps:
+  # Step 1: Copy code to remote VM (trigger already gives us the source)
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      - compute
+      - scp
+      - --recurse
+      - .
+      - ubuntu@dockercicd:/home/faithproject424/cicd
+      - --zone=us-east4-a
+
+  # Step 2: SSH into the VM and run deploy script
   - name: 'gcr.io/cloud-builders/gcloud'
     args:
       - compute
@@ -11,7 +39,3 @@ timeout: '1200s'
 
 options:
   defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
-
-######
-
-
