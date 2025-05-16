@@ -19,10 +19,6 @@ dockerfile_path="/home/faithproject424/cicd/Dockerfile"
 
 cd /home/faithproject424/cicd || { echo "Directory not found!"; exit 1; }
 
-
-echo "Pulling latest code from GitHub..."
-git pull origin main || { echo "Git pull failed! Aborting."; exit 1; }
-
 pwd
 ls -la
 
