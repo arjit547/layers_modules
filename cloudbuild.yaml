@@ -20,9 +20,18 @@ steps:
       - ssh
       - ubuntu@dockercicd
       - --zone=us-east4-a
-      - --command=cd /home/faithproject424/cicd && git pull origin main && bash ./deploy.sh
+      - --command=cd /home/faithproject424/cicd && git pull origin main
+
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      - compute
+      - ssh
+      - ubuntu@dockercicd
+      - --zone=us-east4-a
+      - --command=cd /home/faithproject424/cicd && bash ./deploy.sh
 
 timeout: '1200s'
 
 options:
   defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
+
