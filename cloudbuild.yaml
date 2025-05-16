@@ -14,19 +14,16 @@
 
 ######
 
-
 steps:
-  # Step 1: Copy code to remote VM (trigger already gives us the source)
   - name: 'gcr.io/cloud-builders/gcloud'
     args:
       - compute
       - scp
       - --recurse
-      - .
+      - /workspace/*
       - ubuntu@dockercicd:/home/faithproject424/cicd
       - --zone=us-east4-a
 
-  # Step 2: SSH into the VM and run deploy script
   - name: 'gcr.io/cloud-builders/gcloud'
     args:
       - compute
@@ -35,7 +32,3 @@ steps:
       - --zone=us-east4-a
       - --command=cd /home/faithproject424/cicd && bash ./deploy.sh
 
-timeout: '1200s'
-
-options:
-  defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
