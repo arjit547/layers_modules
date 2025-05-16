@@ -15,18 +15,14 @@
 ######
 
 steps:
-  # copy everything in workspace to the VM
   - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: 'bash'
     args:
       - '-c'
       - |
-        # go to the build workspace (where your code lives)
-        cd $BUILD_WORKSPACE_DIR
-        # copy all files & folders (non-hidden) to the VM target dir
+        # copy all files/folders (non-hidden) from current working dir to VM
         gcloud compute scp --recurse ./* ubuntu@dockercicd:/home/faithproject424/cicd --zone=us-east4-a
 
-  # run your deploy script
   - name: 'gcr.io/cloud-builders/gcloud'
     args:
       - compute
