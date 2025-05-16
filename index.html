@@ -2,178 +2,113 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Wildlife Wonders India</title>
-  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ben 10 - Cartoon Network</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Ubuntu', sans-serif;
-    }
-
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
+    
     body {
-      background-color: #f5f5f5;
-      color: #333;
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(135deg, #1b1b1b 0%, #0f4c27 100%);
+      color: #aaff00;
+      overflow-x: hidden;
     }
-
+    
     header {
-      background-image: url('https://images.unsplash.com/photo-1508672019048-805c876b67e2');
-      background-size: cover;
-      background-position: center;
-      height: 90vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: white;
-      text-align: center;
+      padding: 30px;
+      background: #000;
+      box-shadow: 0 4px 15px rgba(0,255,0,0.7);
     }
-
+    
+    header img {
+      height: 80px;
+      margin-right: 20px;
+      animation: pulse 2s infinite alternate;
+    }
+    
     header h1 {
       font-size: 3rem;
-      background-color: rgba(0, 0, 0, 0.5);
-      padding: 1rem 2rem;
-      border-radius: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.2rem;
+      color: #aaff00;
+      text-shadow: 0 0 10px #00ff00;
+    }
+    
+    @keyframes pulse {
+      0% { filter: drop-shadow(0 0 10px #00ff00); }
+      100% { filter: drop-shadow(0 0 20px #aaff00); }
     }
 
-    nav {
-      background-color: #2c3e50;
-      padding: 1rem;
+    main {
       text-align: center;
+      padding: 60px 20px;
     }
-
-    nav a {
-      color: white;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
+    
+    main h2 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      color: #00ff00;
+      text-shadow: 0 0 8px #00cc00;
     }
-
-    section {
-      padding: 3rem 2rem;
-      max-width: 1200px;
-      margin: auto;
+    
+    main p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto 40px auto;
+      line-height: 1.5;
+      color: #ccff33;
+      text-shadow: 0 0 6px #669900;
     }
-
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-    }
-
-    .card {
-      background-color: white;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      transition: transform 0.3s;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-    }
-
-    .card img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-
-    .card-content {
-      padding: 1rem;
-    }
-
-    .card-content h3 {
-      margin-bottom: 0.5rem;
-    }
-
-    .cta {
-      background: #27ae60;
-      color: white;
-      text-align: center;
-      padding: 2rem;
-      border-radius: 12px;
-      margin-top: 3rem;
-    }
-
-    .cta h2 {
-      margin-bottom: 1rem;
-    }
-
-    .cta a {
+    
+    .btn {
       display: inline-block;
-      padding: 0.7rem 1.5rem;
-      background: white;
-      color: #27ae60;
-      text-decoration: none;
-      border-radius: 8px;
+      padding: 15px 40px;
+      font-size: 1.2rem;
       font-weight: bold;
+      color: #000;
+      background: #aaff00;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 0 15px #aaff00;
+      transition: background 0.3s, box-shadow 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 0.1rem;
+    }
+    
+    .btn:hover {
+      background: #00ff00;
+      box-shadow: 0 0 30px #00ff00;
+      color: #000;
     }
 
     footer {
-      background: #2c3e50;
-      color: white;
+      margin-top: 80px;
+      padding: 20px;
+      background: #000;
+      color: #44cc00;
       text-align: center;
-      padding: 1rem;
-      margin-top: 2rem;
-    }
-
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 2rem;
-      }
+      font-size: 0.9rem;
+      text-shadow: 0 0 5px #44cc00;
     }
   </style>
 </head>
 <body>
-  <nav>
-    <a href="#">Home</a>
-    <a href="#species">Species</a>
-    <a href="#conservation">Conservation</a>
-    <a href="#contact">Contact</a>
-  </nav>
-
   <header>
-    <h1>Explore the Wonders of Wildlife</h1>
+    <img src="https://upload.wikimedia.org/wikipedia/en/7/79/Ben_10_logo.svg" alt="Ben 10 Logo" />
+    <h1>Ben 10 - Cartoon Network</h1>
   </header>
-
-  <section id="species">
-    <h2 style="text-align:center; margin-bottom:2rem;">Featured Wildlife</h2>
-    <div class="features">
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1610057095013-6992a31058e3" alt="Tiger"/>
-        <div class="card-content">
-          <h3>Bengal Tiger</h3>
-          <p>The majestic Bengal Tiger is a symbol of strength and grace, found in India and surrounding countries.</p>
-        </div>
-      </div>
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1506704889623-718c1f4aa5b3" alt="Elephant"/>
-        <div class="card-content">
-          <h3>Asian Elephant</h3>
-          <p>Known for their intelligence and memory, these gentle giants are crucial to the forest ecosystem.</p>
-        </div>
-      </div>
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1555685812-4b943f1cb0eb" alt="Macaw"/>
-        <div class="card-content">
-          <h3>Scarlet Macaw</h3>
-          <p>With vibrant feathers and loud calls, macaws are a visual treat and vital to tropical forests.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="conservation" class="cta">
-    <h2>Protect Wildlife. Protect Our Future.</h2>
-    <p>Join hands with us to support conservation projects around the globe.</p>
-    <a href="#">Get Involved</a>
-  </section>
-
+  <main>
+    <h2>Transform Into Your Favorite Alien Heroes!</h2>
+    <p>Join Ben Tennyson on exciting adventures with the Omnitrix. Explore amazing powers, epic battles, and the world of aliens.</p>
+    <button class="btn" onclick="alert('Welcome to the Ben 10 world!')">Start Your Adventure</button>
+  </main>
   <footer>
-    &copy; 2025 Wildlife Wonders. All rights reserved.
+    &copy; 2025 Cartoon Network. All Rights Reserved.
   </footer>
 </body>
 </html>
-
