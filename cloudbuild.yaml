@@ -15,24 +15,36 @@
 ######
 
 steps:
+  # Step 1: Archive all files in current workspace
+  - name: 'alpine'
+    entrypoint: 'sh'
+    args:
+      - -c
+      - |
+        apk add --no-cache tar && tar -czf app.tar.gz .
+
+  # Step 2: Copy archive to VM home directory
   - name: 'gcr.io/cloud-builders/gcloud'
     args:
       - compute
       - scp
-      - --recurse
-      - /workspace/*
-      - ubuntu@dockercicd:/home/faithproject424/cicd
+      - app.tar.gz
+      - ubuntu@dockercicd:/home/faithproject424/
       - --zone=us-east4-a
 
+  # Step 3: SSH, extract archive directly to /home/faithproject424/cicd (assumes it exists), and run deploy.sh
   - name: 'gcr.io/cloud-builders/gcloud'
     args:
       - compute
       - ssh
       - ubuntu@dockercicd
       - --zone=us-east4-a
-      - --command=cd /home/faithproject424/cicd && bash ./deploy.sh
+      - --command=bash -c "tar -xzf /home/faithproject424/app.tar.gz -C /home/faithproject424/cicd && cd /home/faithproject424/cicd && bash ./deploy.sh"
+
 timeout: '1200s'
 
 options:
-   defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
+  defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
+
+
 
