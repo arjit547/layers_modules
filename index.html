@@ -3,112 +3,145 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ben 10 - Cartoon Network</title>
+  <title>Ben 10 - All Characters</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
-    
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap');
+
     body {
       margin: 0;
       font-family: 'Orbitron', sans-serif;
-      background: linear-gradient(135deg, #1b1b1b 0%, #0f4c27 100%);
+      background: linear-gradient(135deg, #000000, #0f4c27);
       color: #aaff00;
-      overflow-x: hidden;
     }
-    
+
     header {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 30px;
       background: #000;
+      padding: 30px;
+      text-align: center;
       box-shadow: 0 4px 15px rgba(0,255,0,0.7);
     }
-    
+
     header img {
-      height: 80px;
-      margin-right: 20px;
+      height: 100px;
+      margin-bottom: 20px;
       animation: pulse 2s infinite alternate;
     }
-    
+
     header h1 {
+      margin: 0;
       font-size: 3rem;
-      text-transform: uppercase;
-      letter-spacing: 0.2rem;
-      color: #aaff00;
       text-shadow: 0 0 10px #00ff00;
     }
-    
+
     @keyframes pulse {
       0% { filter: drop-shadow(0 0 10px #00ff00); }
       100% { filter: drop-shadow(0 0 20px #aaff00); }
     }
 
-    main {
-      text-align: center;
-      padding: 60px 20px;
+    .character-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+      padding: 40px;
+      max-width: 1200px;
+      margin: auto;
     }
-    
-    main h2 {
-      font-size: 2.5rem;
-      margin-bottom: 15px;
-      color: #00ff00;
-      text-shadow: 0 0 8px #00cc00;
+
+    .card {
+      background: #111;
+      border: 2px solid #00ff00;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0,255,0,0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
     }
-    
-    main p {
-      font-size: 1.2rem;
-      max-width: 600px;
-      margin: 0 auto 40px auto;
-      line-height: 1.5;
-      color: #ccff33;
-      text-shadow: 0 0 6px #669900;
-    }
-    
-    .btn {
-      display: inline-block;
-      padding: 15px 40px;
-      font-size: 1.2rem;
-      font-weight: bold;
-      color: #000;
-      background: #aaff00;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      box-shadow: 0 0 15px #aaff00;
-      transition: background 0.3s, box-shadow 0.3s;
-      text-transform: uppercase;
-      letter-spacing: 0.1rem;
-    }
-    
-    .btn:hover {
-      background: #00ff00;
+
+    .card:hover {
+      transform: scale(1.05);
       box-shadow: 0 0 30px #00ff00;
-      color: #000;
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .card h3 {
+      margin: 10px;
+      text-align: center;
+      color: #ccff33;
+      font-size: 1.2rem;
     }
 
     footer {
-      margin-top: 80px;
+      text-align: center;
       padding: 20px;
       background: #000;
       color: #44cc00;
-      text-align: center;
-      font-size: 0.9rem;
       text-shadow: 0 0 5px #44cc00;
     }
   </style>
 </head>
 <body>
+
   <header>
     <img src="https://upload.wikimedia.org/wikipedia/en/7/79/Ben_10_logo.svg" alt="Ben 10 Logo" />
-    <h1>Ben 10 - Cartoon Network</h1>
+    <h1>Ben 10 - All Aliens & Characters</h1>
   </header>
-  <main>
-    <h2>Transform Into Your Favorite Alien Heroes!</h2>
-    <p>Join Ben Tennyson on exciting adventures with the Omnitrix. Explore amazing powers, epic battles, and the world of aliens.</p>
-    <button class="btn" onclick="alert('Welcome to the Ben 10 world!')">Start Your Adventure</button>
-  </main>
+
+  <section class="character-grid">
+    <!-- Sample Characters (replace src with actual images) -->
+    <div class="card">
+      <img src="https://static.wikia.nocookie.net/ben10/images/f/f6/Four_Arms.png" alt="Four Arms">
+      <h3>Four Arms</h3>
+    </div>
+    <div class="card">
+      <img src="https://static.wikia.nocookie.net/ben10/images/2/2e/Heatblast.png" alt="Heatblast">
+      <h3>Heatblast</h3>
+    </div>
+    <div class="card">
+      <img src="https://static.wikia.nocookie.net/ben10/images/f/fc/XLR8.png" alt="XLR8">
+      <h3>XLR8</h3>
+    </div>
+    <div class="card">
+      <img src="https://static.wikia.nocookie.net/ben10/images/3/32/Diamondhead.png" alt="Diamondhead">
+      <h3>Diamondhead</h3>
+    </div>
+    <div class="card">
+      <img src="https://static.wikia.nocookie.net/ben10/images/3/3e/Ghostfreak.png" alt="Ghostfreak">
+      <h3>Ghostfreak</h3>
+    </div>
+    <div class="card">
+      <img src="https://static.wikia.nocookie.net/ben10/images/1/1f/Cannonbolt.png" alt="Cannonbolt">
+      <h3>Cannonbolt</h3>
+    </div>
+    <div class="card">
+      <img src="https://static.wikia.nocookie.net/ben10/images/d/d2/Wildvine.png" alt="Wildvine">
+      <h3>Wildvine</h3>
+    </div>
+    <div class="card">
+      <img src="https://static.wikia.nocookie.net/ben10/images/f/f1/Wildmutt.png" alt="Wildmutt">
+      <h3>Wildmutt</h3>
+    </div>
+    <div class="card">
+      <img src="https://static.wikia.nocookie.net/ben10/images/8/8a/Upgrade.png" alt="Upgrade">
+      <h3>Upgrade</h3>
+    </div>
+    <div class="card">
+      <img src="https://static.wikia.nocookie.net/ben10/images/b/bf/Grey_Matter.png" alt="Grey Matter">
+      <h3>Grey Matter</h3>
+    </div>
+    <div class="card">
+      <img src="https://static.wikia.nocookie.net/ben10/images/4/47/Ripjaws.png" alt="Ripjaws">
+      <h3>Ripjaws</h3>
+    </div>
+    <!-- Add more characters here -->
+  </section>
+
   <footer>
     &copy; 2025 Cartoon Network. All Rights Reserved.
   </footer>
+
 </body>
 </html>
