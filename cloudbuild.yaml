@@ -20,24 +20,17 @@ steps:
   args:
     - '-c'
     - |
-      # Replace these variables with your VM details
-      VM_NAME="dockercicd"
-      ZONE="us-east4-a"
-      PROJECT_ID=$(gcloud config get-value project)
+      # Directly use values without declaring variables
+      gcloud compute scp --recurse ./app-dir dockercicd:~/app-dir --zone=us-east4-a --project=devops-459203
 
-      # Example: copy files to VM
-      gcloud compute scp --recurse ./app-dir $VM_NAME:~/app-dir --zone=$ZONE --project=$PROJECT_ID
-
-      # Run commands remotely on the VM
-      gcloud compute ssh $VM_NAME --zone=$ZONE --project=$PROJECT_ID --command="
-        cd ~/app-dir && 
+      gcloud compute ssh dockercicd --zone=us-east4-a --project=devops-459203 --command="
+        cd ~/app-dir &&
         ./deploy.sh
       "
 timeout: 1200s
-
-
 options:
   defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
+
 
 
 
