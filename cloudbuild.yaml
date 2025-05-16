@@ -1,0 +1,10 @@
+steps:
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      - compute
+      - ssh
+      - ubuntu@dockercicd  # 👈 specify your VM name
+      - --zone=us-east4-a  # 👈 specify zone, like us-central1-a
+      - --command= "cd /home/faithproject424 && bash ./deploy.sh"
+
+timeout: '1200s'
