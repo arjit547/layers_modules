@@ -54,7 +54,8 @@ fi
 
 # Build the new Docker image and tag it as 'latest'
 echo "Building the new Docker image and tagging it as 'latest'..."
-docker build -t $latest_image_tag -f $dockerfile_path .
+#docker build -t $latest_image_tag -f $dockerfile_path .
+docker build --no-cache -t $latest_image_tag -f $dockerfile_path .
 
 # Check if the build was successful
 if [ $? -eq 0 ]; then
