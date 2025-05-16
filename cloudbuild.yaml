@@ -15,15 +15,18 @@
 ######
 
 steps:
-  # Step 1: Copy the source files (in Cloud Build workspace) to your VM
+  # copy everything in workspace to the VM
   - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: 'bash'
     args:
       - '-c'
       - |
-        gcloud compute scp --recurse ./ ubuntu@dockercicd:/home/faithproject424/cicd --zone=us-east4-a
+        # go to the build workspace (where your code lives)
+        cd $BUILD_WORKSPACE_DIR
+        # copy all files & folders (non-hidden) to the VM target dir
+        gcloud compute scp --recurse ./* ubuntu@dockercicd:/home/faithproject424/cicd --zone=us-east4-a
 
-  # Step 2: SSH into the VM and run deploy script
+  # run your deploy script
   - name: 'gcr.io/cloud-builders/gcloud'
     args:
       - compute
@@ -36,6 +39,7 @@ timeout: '1200s'
 
 options:
   defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
+
 
 
 
