@@ -1,4 +1,29 @@
+# steps:
+#   - name: 'gcr.io/cloud-builders/gcloud'
+#     args:
+#       - compute
+#       - ssh
+#       - ubuntu@dockercicd
+#       - --zone=us-east4-a
+#       - --command=cd /home/faithproject424/cicd && bash ./deploy.sh
+
+# timeout: '1200s'
+
+# options:
+#   defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
+
+######
+
 steps:
+  # Step 1: Copy the source files (in Cloud Build workspace) to your VM
+  - name: 'gcr.io/cloud-builders/gcloud'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        gcloud compute scp --recurse ./ ubuntu@dockercicd:/home/faithproject424/cicd --zone=us-east4-a
+
+  # Step 2: SSH into the VM and run deploy script
   - name: 'gcr.io/cloud-builders/gcloud'
     args:
       - compute
@@ -12,24 +37,6 @@ timeout: '1200s'
 options:
   defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
 
-######
-
-# steps:
-# - name: 'gcr.io/cloud-builders/gcloud'
-#   entrypoint: 'bash'
-#   args:
-#     - '-c'
-#     - |
-#       # Directly use values without declaring variables
-#       gcloud compute scp --recurse ./app-dir dockercicd:~/app-dir --zone=us-east4-a --project=devops-459203
-
-#       gcloud compute ssh dockercicd --zone=us-east4-a --project=devops-459203 --command="
-#         cd ~/app-dir &&
-#         ./deploy.sh
-#       "
-# timeout: 1200s
-# options:
-#   defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
 
 
 
