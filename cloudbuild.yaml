@@ -9,5 +9,4 @@ steps:
 
 timeout: '1200s'
 
-logsBucket: null
-logging: CLOUD_LOGGING_ONLY
+
